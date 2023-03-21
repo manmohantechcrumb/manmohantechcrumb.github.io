@@ -1,0 +1,24 @@
+<VAST version="3.0">
+<Ad>
+<InLine>
+<AdSystem>CPV_Campaign_1</AdSystem>
+<AdTitle>CPV_Campaign_1</AdTitle>
+<Impression/>
+<Creatives>
+<Creative>
+<Linear>
+<Duration>00:00:16</Duration>
+<AdParameters>
+<![CDATA[ <Root> <env>b</env> <DurationSeconds>16</DurationSeconds> <Ed>3BRsqtVZBLO+2W2QvZcRpTeKFevePJ5FdBDfU+0oMS4NWGOFFb/TXnlArGxTHZn16RdFydzEKThaeo3VCNBuzCI/AFsgFdD2fen5B95njhqoHRjqbG4kURWvr5q+A7mMUgFAkG4gXuuVVdia+TER7iI/AFsgFdD2fen5B95njhr4u7AP+48exGxb96zhjCGJAh2/Twse7rBw6MWvlxVFVwNwEoULDwCBt5GuIXI+/AA=</Ed> <vURL>https://serv-b.performoo.com/vai/vv</vURL> <MainURL>https://tc-vai-qa.web.app/main.js</MainURL> <tid></tid> </Root> ]]>
+</AdParameters>
+<MediaFiles>
+<MediaFile type="application/javascript" bitrate="1500" width="600" height="400" delivery="progressive" apiFramework="VPAID">
+<![CDATA[ https://performoo-media.s3.ap-south-1.amazonaws.com/vpaid/vpaid-fe7432b0f4.js ]]>
+</MediaFile>
+</MediaFiles>
+</Linear>
+</Creative>
+</Creatives>
+</InLine>
+</Ad>
+</VAST>
