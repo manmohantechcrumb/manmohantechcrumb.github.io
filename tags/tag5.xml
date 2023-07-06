@@ -10,7 +10,7 @@
             <!-- <Impression id="Impression-ID">http://example.com/track/impression</Impression> -->
             <Creatives>
                 <Creative id="5480" sequence="1">
-                    <Linear>
+                    <Linear skipoffset="00:00:05">
                         <Duration>00:00:10</Duration>
                         <!-- <TrackingEvents>
                             <Tracking event="start">http://example.com/tracking/start</Tracking>
