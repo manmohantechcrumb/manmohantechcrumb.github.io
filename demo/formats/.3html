@@ -1,0 +1,213 @@
+
+<!-- saved from url=(0062)https://eskimi-creatives.com/ads_collect/2021/Floating_button/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="./formats_files/style.css">
+  <script src="./formats_files/jquery.min.js"></script>
+  <script src="./formats_files/CustomEase.min.js"></script>
+  <script src="./formats_files/gsap.min.js"></script>
+<link href="./formats_files/style.css" rel="stylesheet" type="text/css"></head>
+<body style="margin:0;padding:0;">
+
+
+
+<script src="./formats_files/code.js"></script>
+<script>
+
+  // V A R S
+  // m a i n
+  var _document;
+  var _window;
+  var iframe;
+
+  // e l e m e n t s
+  var o = {};
+  o.container = document.getElementById("ad_2413");
+  o.closeBtn = document.getElementById("closeBtn_2413");
+  o.wrapper = document.getElementById("wrapper_2413");
+  o.sc_wrapper = document.getElementById("sc_wrapper_2413");
+  o.dragEl = document.getElementById("dragEl_2413");
+  o.shake_text = document.getElementById("shake_text_2413");
+  o.cta = document.getElementById("cta_2413");
+  o.next = document.getElementById("next_2413");
+
+  // l o c a l
+  var ddef = {
+    topY: 0,
+    ftClick: true,
+    adEnd: false,
+    cokeStarted: false,
+    box: {
+      w: 200,
+      h: 167,
+      cur: 0,
+      imgs: [],
+      list: [],
+    },
+    col: [
+      "#fade07", // yell
+      "#fade07", // yell
+      "#3b207f", // blue
+      "#3b207f", // blue
+      "#3b207f", // blue
+      // "#263a8e",
+    ],
+    drag: {
+      x: 0,
+      y: 0,
+      lx: 0,
+      ly: 0,
+      dx: 0,
+      dy: 0,
+    },
+    screen: {
+      w: 0,
+      h: 0,
+      x: 0,
+      y: 0,
+    },
+    w: 200,
+    h: 167,
+    canvas: null,
+    ctx: null,
+    circles: {
+      amm: 20,
+      list: [],
+      posRed: 0.8, // pos reduce into center
+    },
+    circles2: {
+      amm: 30,
+      list: [],
+      posRed: 0.8, // pos reduce into center
+    },
+    can: {
+      rot: 0,
+      drot: 0,
+      mx: 0,
+      my: 0,
+      x: 50,
+      y: 17,
+      w: 46,
+      h: 99,
+    },
+    shakeCalc: {
+      list: new Array(30),
+    },
+    points: [],
+  }
+  // ddef.circles.list = new Array(ddef.circles.amm)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // OUT //
+
+  function goOut(){
+    var body = _document.getElementsByTagName("BODY");
+    $("section").appendTo( body );
+  }
+
+  function setCss(){
+    var cssLink = document.createElement("link") 
+    cssLink.href = assets_url+"style.css"; 
+    cssLink.rel = "stylesheet"; 
+    cssLink.type = "text/css"; 
+    _window.document.head.appendChild(cssLink);
+  }
+
+  function closeAd(){
+    ddef.closed = true;
+
+    
+    startEvent("close_ad");
+
+    explodeAd("close");
+    
+    gsap.to(o.container, 0.25, {scale: 0, ease: Back.easeIn,
+      onComplete: function(){ o.container.style.display = "none"; }
+    })
+
+    ddef.adEnd = true;
+  }
+
+  o.closeBtn.addEventListener("click", closeAd);
+
+
+  (function() {
+
+    try {
+      var curWindow = window;
+      var myInterval = setInterval( function(){ 
+        if(curWindow.frameElement == null){
+          _document = curWindow.document;
+
+          _window = curWindow;
+          clearInterval(myInterval);
+          initIFrame();
+        } else {
+          iframe = curWindow.frameElement;
+        }
+        curWindow = curWindow.parent;
+      }, 10);
+    }
+    catch(error) {
+      console.error(error);
+    }
+  })();
+
+
+
+
+  // Eskimi Def
+
+  var _dsptr=function(e){var track = new Image(); track.src="{EVENT_URL}"+e;}
+  function ctaFunction(){
+    _window.open("{CLICK_URL}");
+  }
+  function startEvent(event_name){
+    _dsptr(event_name);
+  }
+  var assets_url = "images/";
+
+// f
+
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       || 
+          window.webkitRequestAnimationFrame || 
+          window.mozRequestAnimationFrame    || 
+          window.oRequestAnimationFrame      || 
+          window.msRequestAnimationFrame     || 
+          function(/* function */ callback, /* DOMElement */ element){
+              window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
+
+
+</script>
+
+
+<section id="ad_2413" class="">
+
+    <div id="sc_wrapper_2413">
+      <div id="wrapper_2413" style="transform: translate(0px, 0px); transform-origin: 50% 50%;">
+      </div>
+      <div id="next_2413" style="opacity: 0;"></div>
+      <div id="shake_text_2413" style="opacity: 1; transform-origin: 50% 90%; transform: translate3d(0px, 0px, 0px) scale(1.061, 1.0611);"></div>
+    </div>
+
+    <div id="dragEl_2413"></div>
+    <div id="closeBtn_2413"></div>
+</section><canvas width="1862" height="887" style="width: 1862px; height: 887px; position: fixed; z-index: 9999998; inset: 0px; pointer-events: none;"></canvas></body></html>

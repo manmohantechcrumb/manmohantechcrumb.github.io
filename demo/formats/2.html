@@ -1,0 +1,840 @@
+
+<!-- saved from url=(0069)https://eskimi-creatives.com/ads_collect/2021/22bet_300x250_Floating/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="./2_files/style.css">
+  <script src="./2_files/jquery.min.js"></script>
+  <script src="./2_files/CustomEase.min.js"></script>
+  <script src="./2_files/gsap.min.js"></script>
+<link href="./2_files/style.css" rel="stylesheet" type="text/css"></head>
+<body style="margin:0;padding:0;">
+
+
+
+<script src="./2_files/code.js"></script>
+
+<script>
+
+  // V A R S
+  // m a i n
+  var _document;
+  var _window;
+  var iframe;
+
+  // e l e m e n t s
+  var o = {};
+  o.container = document.getElementById("ad_2413");
+  o.closeBtn = document.getElementById("closeBtn_2413");
+  // o.canvas = document.getElementById("canvas_2413");
+  o.shake_text = document.getElementById("shake_text_2413");
+  o.cta = document.getElementById("cta_2413");
+  o.can = document.getElementById("can_2413");
+  o.box = document.getElementById("box_2413");
+  o.stick = document.getElementById("stick_2413");
+  o.wrapper = document.getElementById("wrapper_2413");
+  o.sc_wrapper = document.getElementById("sc_wrapper_2413");
+  o.dragEl = document.getElementById("dragEl_2413");
+  o.cta = document.getElementById("cta_2413");
+  o.cursor = document.getElementById("cursor_2413");
+  o.spin_text = document.getElementById("spin_text_2413");
+  o.scaleCont = document.getElementById("scaleCont_2413");
+  o.f1 = document.getElementById("f1_2413");
+  o.f2 = document.getElementById("f2_2413");
+  o.f3 = document.getElementById("f3_2413");
+  o.f4 = document.getElementById("f4_2413");
+  o.f5 = document.getElementById("f5_2413");
+  o.f6 = document.getElementById("f6_2413");
+  o.end = document.getElementById("end_2413");
+  o.text = document.getElementById("text_2413");
+
+  // l o c a l
+  var ddef = {
+    firstCirclesActive: true,
+    ftClick: true,
+    adEnd: false,
+    cokeStarted: false,
+    col: [
+      "#fd0648",
+      "#06f5fd",
+      "#308f9c",
+      "#bf2624",
+    ],
+    drag: {
+      x: 0,
+      y: 0,
+      lx: 0,
+      ly: 0,
+      dx: 0,
+      dy: 0,
+    },
+    screen: {
+      w: 0,
+      h: 0,
+      x: 0,
+      y: 0,
+    },
+    w: 150,
+    h: 150,
+    canvas: null,
+    ctx: null,
+    circles: {
+      amm: 14,
+      list: [],
+      posRed: 0.8, // pos reduce into center
+    },
+    circles2: {
+      amm: 30,
+      list: [],
+      posRed: 0.8, // pos reduce into center
+    },
+    can: {
+      rot: 0,
+      drot: 0,
+      mx: 0,
+      my: 0,
+      x: 50,
+      y: 17,
+      w: 46,
+      h: 99,
+    },
+    shakeCalc: {
+      list: new Array(30),
+    },
+  }
+  // ddef.circles.list = new Array(ddef.circles.amm)
+
+  function initIFrame(){
+    setCss();
+    goOut();
+    prepScrollControl();
+
+    setTimeout( function(){
+      window.__eFlAdEl = document.getElementById(o.container);
+
+      screenCanvas();
+      events();
+
+      loop();
+      initDrag();
+      initAnim();
+
+      o.container.style.opacity = 1;
+      // setTimeout( initCircles2, 500 );
+    }, 2000);
+
+  }
+
+  function events(){
+    // ddef.screen.w = _window.innerWidth;
+    // ddef.screen.h = _window.innerHeight;
+    // _window.addEventListener('resize', onResize);
+
+
+    _window.addEventListener('resize', onResizeScale);
+    onResizeScale();
+
+
+    var maz = (ddef.screen.w < ddef.screen.h) ? ddef.screen.w : ddef.screen.h;
+
+    ad_s = 0.3 * maz / 150;
+    if(ad_s>1) ad_s = 1;
+    gsap.set(o.scaleCont, {scale: ad_s, transformOrigin: "100% 100%"})
+  }
+
+  // var p_x_add =
+
+  var ad_s = 1;
+
+
+  function onResizeScale(){
+    ddef.screen.w = _window.innerWidth;
+    ddef.screen.h = _window.innerHeight;
+
+  }
+
+  // function onResize(){
+  //   var c = ddef.canvas;
+  //   c.width = _window.innerWidth;
+  //   c.height = _window.innerHeight;
+  //   c.style.width = _window.innerWidth;
+  //   c.style.height = _window.innerHeight;
+  // }
+
+  function screenCanvas(){
+    var c = document.createElement("CANVAS");
+    c.width = _window.innerWidth;
+    c.height = _window.innerHeight;
+    c.style.width = _window.innerWidth;
+    c.style.height = _window.innerHeight;
+    c.style.position = "fixed";
+    c.style.zIndex = 9999998;
+    c.style.top = "0px";
+    c.style.bottom = "0px";
+    c.style.left = "0px";
+    c.style.right = "0px";
+    c.style.pointerEvents = "none";
+
+    ddef.canvas = c;
+    ddef.ctx = c.getContext("2d");
+
+    var body = _document.getElementsByTagName("body")[0];
+    body.appendChild(c);
+  }
+
+  function initCircles(){
+
+
+    for(var i=0; i<ddef.circles.amm; i++){
+      ddef.circles.list.push( {} );
+      createCircle(i);
+    }
+  }
+
+  function startCoke(){
+
+    gsap.to(o.cursor, 0.2, {opacity: 0, onComplete: function(){
+      ddef.cursorTl.kill()
+    }});
+
+    animFruits();
+
+    gsap.to(o.stick, 0.2, {rotation: 140, y: -20, transformOrigin: "20% 80%", ease: "power1.inOut"})
+    gsap.to(o.stick, 0.1, {scaleX: 0.5, transformOrigin: "20% 80%", ease: "power1.in"})
+    gsap.to(o.stick, 0.1, {delay: 0.1, scaleX: 1, transformOrigin: "20% 80%", ease: "power1.out"})
+
+    // gsap.to(o.wrapper, 0.4, {width: 550, scale: 0.35, x: -200, ease: Back.easeOut});
+
+    // gsap.to(o.can, 0.2, {scale: 1, ease: Power2.easeOut, onComplete: function(){
+      // gsap.to(o.can, 0.2, {scale: 1, ease: Power2.easeOut});
+
+      gsap.to(o.spin_text, 0.2, {scale: 0, ease: "power2.out", transformOrigin: "50% 65%", onComplete: function(){
+        ddef.shakeTl.kill();
+      }});
+      // }})
+      // gsap.set(o.cta, {opacity: 1, scale: 0, transformOrigin: "50% 85%"})
+      // gsap.to(o.cta, 0.35, {delay: 0.35, scale: 1, ease: Back.easeOut, transformOrigin: "50% 85%"})
+    // }})
+
+  }
+
+  function initCircles2(){
+
+    ddef.firstCirclesActive = false;
+
+    CustomEase.create("e1", "M0,0 C0.052,-0.1 0.176,-0.462 0.356,-0.462 0.684,-0.462 0.942,0.895 1,1");
+
+    // ddef.ctx.fillStyle = "#460b03";
+    // ddef.ctx.fillStyle = gradient;
+    for(var i=0; i<ddef.circles2.amm; i++){
+
+
+      setTimeout((function(i) {
+        return function() {
+          ddef.circles2.list.push( {} );
+          createCircle2(i);
+        };
+      })(i), 10*i);
+
+
+    }
+  }
+
+  function initAnim(){
+    CustomEase.create("e0", "M0,0 C0.128,0.572 0.263,0.926 0.518,1 0.678,1.046 0.838,1 1,1");
+
+    gsap.set(o.box, {x: -240, y: -100, scale: 0.4, transformOrigin: "50% 50%"});
+
+    gsap.from(o.text, 0.75, {delay: 0.2, scale: 0, ease: "e0"});
+
+    gsap.set(o.wrapper, {scale: 1, x: 0, y: 0, transformOrigin: "50% 50%"});
+    gsap.from(o.wrapper, 0.75, {delay: 0.1, rotation: 180, scale: 0, ease: "e0", onStart: function(){
+      // gsap.set(o.box, { opacity: 1 });
+    }, onComplete: function(){
+
+    }})
+    setTimeout(startSpawn, 300);
+
+    // ddef.cursorTl = gsap.timeline({repeat: -1, repeatDelay: 0.5});
+    gsap.set(o.cursor, {left: 530, top: 85, scale: 1})
+    gsap.from(o.cursor, 0.5, {delay: 0.5, scale: 0, ease: Back.easeOut, onComplete: function(){
+
+      ddef.cursorTl = gsap.to(o.cursor, 0.5, {scale: 0.8, ease: Power1.easeInOut, yoyo: true, repeat: -1});
+
+
+    }})
+
+
+    var dx = 6;
+    gsap.set(o.spin_text, { scale: 1.1, transformOrigin: "50% 65%" })
+    ddef.shakeTl = gsap.to(o.spin_text, 0.35, { scale: 0.95, ease: Power1.easeInOut, yoyo: true, repeat: -1, repeatDelay: 0.05, })
+
+  }
+
+  function startSpawn(){
+    initCircles();
+
+    // var dx = 6;
+    // gsap.set(o.shake_text, { scale: 1.1, transformOrigin: "50% 90%" })
+    // gsap.to(o.shake_text, 1, { delay: 0.4, opacity: 1 })
+    // ddef.shakeTl = gsap.to(o.shake_text, 0.35, { scale: 0.95, ease: Power1.easeInOut, yoyo: true, repeat: -1, repeatDelay: 0.05, })
+  }
+
+  function createCircle(index){
+
+    var x0 = ddef.screen.x + ddef.w*0.4 + (1-ad_s) * 90;
+    var y0 = ddef.screen.y + ddef.h*0.55 + (1-ad_s) * 50;
+    var r = ddef.w*0.75;
+    var a = Math.random() * 2 * Math.PI;
+
+    var dx = ddef.drag.dx;
+    var dy = ddef.drag.dy;
+    var max = 20;
+    if( dx > max ) dx = max;
+    if( dy > max ) dy = max;
+    if( dx < -max ) dx = -max;
+    if( dy < -max ) dy = -max;
+
+    // console.log( dx )
+
+    var e1 = gsap.parseEase("power1.in");
+    var e2 = gsap.parseEase("power1.out");
+    var ee = e1;
+    if(Math.random()>0.5){
+      e1=e2;
+      e2=ee;
+    }
+
+    var col = ddef.col[ Math.floor( Math.random() * ddef.col.length ) ];
+    // console.log( col )
+    var c = {
+      active: false,
+      color: col,
+      live: 0,
+      dur: 0.6 + 1.4 * Math.random(),
+      posStart: {
+        x: x0,
+        y: y0,
+      },
+      e1: e1,
+      e2: e2,
+      force: {
+        x0: -dx*0.5,
+        y0: -dy*0.5,
+        x: 0,
+        y: 0,
+      },
+      posEnd: {
+        x: x0 + r * Math.cos(a),
+        y: y0 + r * Math.sin(a)
+      },
+      s0: (10 + 10 * Math.random())*ad_s,
+      pos: {x: 0, y: 0},
+      s: 0,
+      tl: null,
+      index: index,
+    }
+
+    c.tl = gsap.to(c, c.dur, {live: 1, ease: Linear.easeNone, onStart: function(){  //Power1.easeOut
+      c.active = true;
+    }, onComplete: function(){
+      c.active = false;
+      if(!ddef.adEnd && ddef.firstCirclesActive) createCircle( index );
+    }})
+
+    ddef.circles.list[ index ] = c;
+  }
+
+  function createCircle2(index){
+
+    var x0 = ddef.screen.x + ddef.w*0.45 + (1-ad_s) * 70;
+    var y0 = ddef.screen.y + ddef.h*0.4 + (1-ad_s) * 100;
+    var r = ddef.w/2;
+    var a = Math.random() * 2 * Math.PI;
+
+    var dx = ddef.drag.dx;
+    var dy = ddef.drag.dy;
+    var max = 20;
+    if( dx > max ) dx = max;
+    if( dy > max ) dy = max;
+    if( dx < -max ) dx = -max;
+    if( dy < -max ) dy = -max;
+
+    var c = {
+      active: true,
+      live: 0,
+      dur: 0.8 + 0.8 * Math.random(),
+      posStart: {
+        x: x0,
+        y: y0,
+      },
+      force: {
+        x0: -dx*0.5,
+        y0: -dy*0.5,
+        x: 0,
+        y: 0,
+      },
+      posEnd: {
+        x: x0 + 500 * (0.5 - Math.random()),
+        y: y0 + 350 + 200 * (0.5-Math.random()),
+      },
+      // s0: 2 + 50 * Math.random(),
+      pos: {
+        x: x0,
+        y: y0,
+      },
+      s: (0.5 + 0.5 * Math.random()) * ad_s,
+      tl: null,
+      index: index,
+      img_id: Math.floor(8 * Math.random()),
+    }
+
+
+    gsap.to(c.pos, c.dur, {x: c.posEnd.x, ease: "none"})
+    gsap.to(c.pos, c.dur, {y: c.posEnd.y, ease: "e1"})
+    // gsap.to(c.pos, c.dur, {y: c.posEnd.y, ease: Back.easeIn.config(5)})
+    gsap.to(c, c.dur, {s: 0, ease: Expo.easeIn})
+
+    c.tl = gsap.to(c, c.dur, {live: 1, onComplete: function(){
+      c.active = false;
+      if(!ddef.adEnd) createCircle2( index );
+    }})
+
+    ddef.circles2.list[ index ] = c;
+  }
+
+
+  function calc(d, index, mode){
+    d.force.x += d.force.x0;
+    d.force.y += d.force.y0;
+    d.force.x0 *= 0.98;
+    d.force.y0 *= 0.98;
+
+    if(mode == 0){
+      var val = d.live;
+      d.s = d.s0 * Power1.easeOut(1-val);
+      // var v1 = Power1.easeIn(val);
+      // var v2 = Power1.easeOut(val);
+      // var vv = v1;
+      // if(Math.random()<0.5) {
+      //   v1 = v2;
+      //   v2 = vv;
+      // }
+      var v1 = d.e1(val);
+      var v2 = d.e2(val);
+      d.pos.x = d.posStart.x + (d.posEnd.x - d.posStart.x) * (v1);
+      d.pos.y = d.posStart.y + (d.posEnd.y - d.posStart.y) * (v2);
+    } else {
+    }
+  }
+
+
+  function draw(d, index, mode){
+    var x = d.pos.x + d.force.x;
+    var y = d.pos.y + d.force.y;
+
+    if(mode == 1){
+      var gradient = ddef.ctx.createRadialGradient(x+d.s*0.4, y-d.s*0.3, 0, x+d.s*0.4, y-d.s*0.3, d.s*1.5);
+      // gradient.addColorStop(1, '#190705');
+      // gradient.addColorStop(0, '#ce551c');
+      gradient.addColorStop(0, '#00c2cb');
+      gradient.addColorStop(1, '#134a80');
+      ddef.ctx.fillStyle = gradient;
+    } else {
+      // ddef.ctx.fillStyle = "#f10000";
+      ddef.ctx.fillStyle = d.color;
+    }
+
+    ddef.ctx.beginPath();
+    ddef.ctx.arc(x, y, d.s, 0, 2 * Math.PI);
+    ddef.ctx.fill();
+  }
+
+  function drawCoin(d, index, mode){
+    var x = d.pos.x + d.force.x;
+    var y = d.pos.y + d.force.y;
+
+    // ddef.ctx.beginPath();
+    // ddef.ctx.arc(x, y, d.s, 0, 2 * Math.PI);
+    // ddef.ctx.fill();
+
+    var w = 50;
+    var h = 50;
+    var ww = w*d.s;
+    var hh = h*d.s;
+
+    var xx = Math.floor( d.img_id ) * w;
+    var yy = 0;
+
+    x += -ww/2;
+    y += -hh/2;
+
+
+    ddef.ctx.drawImage(coin_img, xx, yy, w, h, x, y, ww, hh);
+
+    // next coin frame
+    d.img_id+= 0.5;
+    if(d.img_id >= 8){ d.img_id = 0 };
+  }
+
+  function loop(){
+    requestAnimFrame(loop);
+    ddef.ctx.clearRect(0, 0, ddef.screen.w, ddef.screen.h)
+
+
+    ddef.drag.dx = ddef.drag.lx - ddef.drag.x;
+    ddef.drag.dy = ddef.drag.ly - ddef.drag.y;
+    ddef.drag.lx = ddef.drag.x;
+    ddef.drag.ly = ddef.drag.y;
+
+    var maxRot = 30;
+    ddef.can.rot = ddef.drag.dx;
+    var dr = ddef.can.rot - ddef.can.drot;
+    ddef.can.drot += dr/2;
+    var rot = ddef.can.drot;
+
+    if(rot > maxRot) rot = maxRot;
+    if(rot < -maxRot) rot = -maxRot;
+
+    var val = rot/maxRot;
+    var sign = Math.sign(val);
+    var ease = Power1.easeIn( Math.abs(val) );
+    var res = maxRot * ease * sign;
+    //
+
+    // var dxx = dx;
+    // var dxMax =
+    // if(dxx < )
+
+    gsap.set(o.wrapper, {rotation: res})
+
+    // console.log( res )
+
+    // ddef.drag.dx
+
+    // get x y of can
+    var style = getComputedStyle( o.container );
+    var l = parseFloat( style.getPropertyValue("left") );
+    var t = parseFloat( style.getPropertyValue("top") );
+    ddef.screen.x = l;
+    ddef.screen.y = t;
+    // var l = o.container.style.left;
+    // console.log( t, l );
+
+    // calc and draw circles
+    for(var i=0; i<ddef.circles.list.length; i++){
+      if( ddef.circles.list[i].active ){
+        var d = ddef.circles.list[i];
+        calc(d, i, 0);
+        draw(d, i, 0);
+      }
+    }
+
+    // calc and draw circles #2
+    for(var i=0; i<ddef.circles2.list.length; i++){
+      // console.log(  ddef.circles2.list[i].active )
+      if( ddef.circles2.list[i].active ){
+        var d = ddef.circles2.list[i];
+        calc(d, i, 1);
+        // draw(d, i, 1);
+        drawCoin( d, i, 1)
+      }
+    }
+
+
+  }
+
+
+
+
+
+
+
+
+// SCROLL DISABLE //
+var $window = null, previousScrollTop = 0, scrollLock = false;
+
+function prepScrollControl(){
+  $window = $(_window);
+
+  $window.scroll(function(event) {
+      if(scrollLock) {
+          $window.scrollTop(previousScrollTop);
+      }
+  });
+
+}
+
+function disableScroll() {
+  scrollLock = true;
+  previousScrollTop = $window.scrollTop();
+}
+
+function enableScroll() {
+  scrollLock = false;
+}
+
+// eND
+
+
+
+
+
+
+
+
+
+
+  // OUT //
+
+  function goOut(){
+    var doc = _document || null, el = document.getElementById('ad_2413');
+    if (!doc || !el) return;
+    _document.body.appendChild(el);
+    if ('__eIntersectionObserver' in window) {
+        window.__eIntersectionObserver.observe(el);
+    }
+  }
+
+  function setCss(){
+    var cssLink = document.createElement("link")
+    cssLink.href = assets_url+"style.css";
+    cssLink.rel = "stylesheet";
+    cssLink.type = "text/css";
+    _window.document.head.appendChild(cssLink);
+  }
+
+  function closeAd(){
+
+    startEvent("close_ad");
+
+    gsap.to(o.container, 0.25, {scale: 0, ease: Back.easeIn,
+      onComplete: function(){ o.container.style.display = "none"; }
+    })
+
+    ddef.adEnd = true;
+  }
+
+  o.closeBtn.addEventListener("click", closeAd);
+
+
+  (function() {
+
+    try {
+      var curWindow = window;
+      var myInterval = setInterval( function(){
+        if(curWindow.frameElement == null){
+          _document = curWindow.document;
+
+          _window = curWindow;
+          clearInterval(myInterval);
+          initIFrame();
+        } else {
+          iframe = curWindow.frameElement;
+        }
+        curWindow = curWindow.parent;
+      }, 10);
+    }
+    catch(error) {
+      console.error(error);
+    }
+  })();
+
+
+
+
+  /// DRAG ///
+
+  function initDrag(){
+    var dragAmm = 0;
+    var dex = 0;
+    var dey = 0;
+    var cx = 0;
+    var cy = 0;
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+    // dragElement( o.container );
+    dragElement( o.dragEl );
+
+    function dragElement(elmnt) {
+        elmnt.onmousedown = dMouseDown;
+        // var el = o.container;
+        var el = elmnt;
+        el.ontouchstart = dTouchDown;
+
+      function dMouseDown(e){
+        e = e || _window.event;
+        // e.preventDefault();
+        gsap.to(o.sc_wrapper, 0.2, {scale: 1.1, ease: Power1.easeOut})
+
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+
+        dragMouseDown(e);
+      }
+      function dTouchDown(e){
+        e = e || _window.event;
+        // e.preventDefault();
+
+        gsap.to(o.sc_wrapper, 0.2, {scale: 1.1, ease: Power1.easeOut})
+
+        pos3 = e.touches[0].clientX;
+        pos4 = e.touches[0].clientY;
+
+        dragMouseDown(e);
+      }
+
+      function dragMouseDown(e) {
+        disableScroll();
+
+        dragAmm = 0;
+        _document.onmouseup = closeDragElement;
+        _document.ontouchend = closeDragElement;
+        _document.onmousemove = mouseDrag;
+        _document.ontouchmove = touchDrag;
+      }
+
+      function mouseDrag(e){
+        e = e || _window.event;
+        // e.preventDefault();
+        elementDrag(e, true);
+      }
+
+      function touchDrag(e){
+        e.stopImmediatePropagation();
+
+        elementDrag(e, false);
+
+      }
+
+      var sPos = {x: 0, y: 0};
+      var cPos = {x: 0, y: 0};
+
+      function elementDrag(e, isMouse) {
+        dragAmm++;
+        var clientX = (isMouse) ? e.clientX : e.touches[0].clientX;
+        var clientY = (isMouse) ? e.clientY : e.touches[0].clientY;
+
+        pos1 = pos3 - clientX;
+        pos2 = pos4 - clientY;
+        pos3 = clientX;
+        pos4 = clientY;
+
+        cPos.x += sPos.x - pos1;
+        cPos.y += sPos.y - pos2;
+
+        var x = cPos.x;
+        var y = cPos.y;
+
+        ddef.drag.x = x;
+        ddef.drag.y = y;
+
+        // o.container.style.marginRight = -x + "px";
+        // o.container.style.marginBottom = -y + "px";
+        o.container.style.right = 34-x + "px";
+        o.container.style.bottom = 22-y + "px";
+
+
+    // right: 34px;
+    // bottom: 22px;/
+      }
+
+      function closeDragElement(e) {
+        // console.log("cDE", dragAmm)
+        enableScroll();
+
+        if(dragAmm <= 2 && click == 0){
+          // console.log("c t a _ ", ddef.ftClick)
+          if(ddef.ftClick){
+            startCoke();
+            ddef.ftClick = false;
+            startEvent("click");
+          } else {
+            ctaFunction();
+          }
+          click = 1;
+          setTimeout(function(){ click = 0 }, 1000)
+        } else {
+          startEvent("drag");
+        }
+        gsap.to(o.sc_wrapper, 0.25, {scale: 1, ease: Power1.easeOut})
+        _document.onmouseup = null;
+        _document.onmousemove = null;
+        _document.ontouchend = null;
+        _document.ontouchmove = null;
+
+      }
+
+      var click = 0;
+
+
+    }
+  }
+
+
+  // Eskimi Def
+
+  var _dsptr=function(e){var track = new Image(); track.src="{EVENT_URL}"+e;}
+  function ctaFunction(){
+    _window.open("{CLICK_URL}");
+  }
+  function startEvent(event_name){
+    _dsptr(event_name);
+  }
+  var assets_url = "images/";
+
+// f
+
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          window.oRequestAnimationFrame      ||
+          window.msRequestAnimationFrame     ||
+          function(/* function */ callback, /* DOMElement */ element){
+              window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
+
+
+</script>
+
+
+
+<section id="ad_2413" class="container" style="opacity: 1;">
+
+    <div id="text_2413" class="fs_2413" style="opacity: 1; transform: translate(0px, 0px);"></div>
+
+    <div id="scaleCont_2413" style="transform-origin: 100% 100%; transform: translate(0px, 0px);">
+      <div id="sc_wrapper_2413">
+        <div id="wrapper_2413" style="transform: translate(0px, 0px); transform-origin: 50% 50%;">
+          <div id="box_2413" style="opacity: 1; transform-origin: 50% 50%; transform: translate(-240px, -100px) scale(0.4, 0.4);">
+            <div id="stick_2413" class=""></div>
+            <div id="boxBack_2413" class="fs_2413"></div>
+            <div id="coinCont_2413" class="">
+              <div id="f1_2413" class="fruits_2413"></div>
+              <div id="f2_2413" class="fruits_2413"></div>
+              <div id="f3_2413" class="fruits_2413"></div>
+              <div id="f4_2413" class="fruits_2413"></div>
+              <div id="f5_2413" class="fruits_2413"></div>
+              <div id="f6_2413" class="fruits_2413"></div>
+            </div>
+            <div id="boxFront_2413" class="fs_2413"></div>
+            <div id="spin_text_2413" class="fs_2413" style="transform-origin: 50% 65%; transform: translate3d(0px, 0px, 0px) scale(1.095, 1.0953);"></div>
+            <div id="cta_2413" class="fs_2413" style="opacity: 0"></div>
+            <div id="cursor_2413" class="" style="transform: translate3d(0px, 0px, 0px) scale(0.826, 0.8266); top: 85px; left: 530px;"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div id="cta_2413" style="opacity: 0;"></div>
+
+    <div id="end_2413" class="fs_2413" style="opacity: 0"></div>
+
+    <div id="dragEl_2413"></div>
+    <div id="closeBtn_2413"></div>
+</section><canvas width="1862" height="887" style="width: 1862px; height: 887px; position: fixed; z-index: 9999998; inset: 0px; pointer-events: none;"></canvas></body></html>

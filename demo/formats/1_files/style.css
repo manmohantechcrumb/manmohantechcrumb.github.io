@@ -1,0 +1,124 @@
+html,
+body {
+  overscroll-behavior-y: contain !important;
+}
+.logo {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  height: 45%;
+}
+.house {
+  height: 150px;
+  width: 150px;
+  position: absolute;
+  top: 0;
+}
+#dragEl_2413 {
+  position: absolute !important;
+  width: 150px !important;
+  height: 150px !important;
+  overflow: hidden;
+  background-image: url(empty.png) !important;
+}
+
+#closeBtn_2413 {
+  position: absolute !important;
+  width: 24px !important;
+  height: 24px !important;
+  top: -5px !important;
+  right: -5px !important;
+  background-image: url(closeBtn.png) !important;
+  cursor: pointer !important;
+}
+
+#canvas_2413 {
+  position: absolute !important;
+  width: 150px !important;
+  height: 150px !important;
+}
+
+#ball_2413 {
+  position: absolute !important;
+  bottom: -260px;
+  /* width: 150px !important; */
+  /* height: 440px !important; */
+  /* background-image: url(ball.png) !important; */
+}
+#ball_2413 img {
+  height: 320px;
+}
+#cta_cont_2413 {
+  height: 150px !important;
+  width: 150px !important;
+}
+#cta_2413 {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+#shadow_2413 {
+  position: absolute !important;
+  /* width: 636px !important; */
+  /* height: 633px !important; */
+  background-image: url(shadow.png) !important;
+}
+
+#cta_2413 {
+  position: absolute !important;
+  bottom: -90px;
+  width: 540px !important;
+  height: 100px !important;
+  background-color: #5cbb5c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  /* height: 633px !important; */
+  /* background-image: url(cta.png) !important; */
+}
+#cta_2413 p {
+  margin: 0;
+  font-size: 70px;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+}
+
+#ad_2413 {
+  width: 150px !important;
+  height: 150px !important;
+  /* overflow-x: hidden; */
+  position: fixed !important;
+  /*margin: 0 auto 40px !important;*/
+  border: 0px solid #ccc !important;
+  -webkit-perspective: 1000px !important;
+  -moz-perspective: 1000px !important;
+  -o-perspective: 1000px !important;
+  perspective: 1000px !important;
+  z-index: 9999999 !important;
+  /*    right: 5% !important;
+    bottom: 2% !important;*/
+  cursor: grab !important;
+
+  /*  top: 0px !important;
+    left: 0px !important;*/
+  right: 25px;
+  bottom: 25px;
+  /*overflow: hidden !important;*/
+  /*text-overflow: clip !important;*/
+  border-radius: 5px !important;
+}
+
+.rct {
+  width: 150px !important;
+  height: 150px !important;
+  position: absolute !important;
+}
+
+.noDisplay {
+  display: none !important;
+}
+
+.noEvents {
+  pointer-events: none !important;
+}
