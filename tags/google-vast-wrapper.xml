@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="4.0" xsi:noNamespaceSchemaLocation="vast.xsd">
+        <Ad id="0cf1c97d-49e5-4edb-aac0-8c59a489f5d4">
+            <Wrapper fallbackOnNoAd="true" followAdditonalWrappers="true">
+            <AdSystem>TCRM</AdSystem>
+              <VASTAdTagURI>
+                  <![CDATA[ https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_ad_samples&sz=640x480&cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator= ]]>
+              </VASTAdTagURI>
+              <Extensions>
+                        <Extension type="waterfall" fallback_index="0"/>
+                      </Extensions>
+          </Wrapper>
+        </Ad>
+        <Ad id="8bed7dbd-0253-4284-b06e-b973fdb24e1d">
+              <Wrapper fallbackOnNoAd="true" followAdditonalWrappers="true">
+              <AdSystem>TCRM</AdSystem>
+              <VASTAdTagURI>
+                  <![CDATA[ https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_preroll_skippable&sz=640x480&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator= ]]>
+              </VASTAdTagURI>
+              <Extensions>
+                        <Extension type="waterfall" fallback_index="0"/>
+                      </Extensions>
+          </Wrapper>
+        </Ad>
+        <Ad id="26e8c1be-747f-496c-934a-6aa5a3b3a1af">
+              <Wrapper fallbackOnNoAd="true" followAdditonalWrappers="true">
+              <AdSystem>TCRM</AdSystem>
+              <VASTAdTagURI>
+                  <![CDATA[ https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_ad_samples&sz=640x480&cust_params=sample_ct%3Dlinearvpaid2js&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator= ]]>
+              </VASTAdTagURI>
+              <Extensions>
+                        <Extension type="waterfall" fallback_index="0"/>
+                      </Extensions>
+          </Wrapper>
+        </Ad>
+</VAST>
