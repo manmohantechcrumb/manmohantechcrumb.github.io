@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="4.0" xsi:noNamespaceSchemaLocation="vast.xsd">
+        <Ad id="0cf1c97d-49e5-4edb-aac0-8c59a489f5d4">
+            <Wrapper fallbackOnNoAd="true" followAdditonalWrappers="true">
+            <AdSystem>TCRM</AdSystem>
+              <VASTAdTagURI>
+                  <![CDATA[ https://manmohantechcrumb.github.io/tags/tag4.xml ]]>
+              </VASTAdTagURI>
+              <Extensions>
+                        <Extension type="waterfall" fallback_index="0"/>
+                      </Extensions>
+          </Wrapper>
+        </Ad>
+        <Ad id="8bed7dbd-0253-4284-b06e-b973fdb24e1d">
+              <Wrapper fallbackOnNoAd="true" followAdditonalWrappers="true">
+              <AdSystem>TCRM</AdSystem>
+              <VASTAdTagURI>
+                  <![CDATA[ https://manmohantechcrumb.github.io/tags/tag2.xml ]]>
+              </VASTAdTagURI>
+              <Extensions>
+                        <Extension type="waterfall" fallback_index="0"/>
+                      </Extensions>
+          </Wrapper>
+        </Ad>
+        <Ad id="8bed7dbd-0253-4284-b06e-b973fdb24e1d">
+              <Wrapper fallbackOnNoAd="true" followAdditonalWrappers="true">
+              <AdSystem>TCRM</AdSystem>
+              <VASTAdTagURI>
+                  <![CDATA[ https://manmohantechcrumb.github.io/tags/tag1.xml ]]>
+              </VASTAdTagURI>
+              <Extensions>
+                        <Extension type="waterfall" fallback_index="0"/>
+                      </Extensions>
+          </Wrapper>
+        </Ad>
+</VAST>
