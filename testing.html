@@ -1,0 +1,35 @@
+<script>
+(function() {
+  var gptScript = document.createElement('script');
+  gptScript.async = true;
+  gptScript.src = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js';
+  document.head.appendChild(gptScript);
+
+  var gptScriptInline1 = document.createElement('script');
+  gptScriptInline1.innerHTML = `
+    window.googletag = window.googletag || {cmd: []};
+    googletag.cmd.push(function() {
+      googletag.defineSlot('/22794132248,1089059/Cardekho_300x250', [[336, 280], [300, 250]], 'div-gpt-ad-1695468435581-0').setTargeting('floor', []).addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+  `;
+  document.head.appendChild(gptScriptInline1);
+
+  var gptDiv = document.createElement('div');
+  gptDiv.id = 'div-gpt-ad-1695468435581-0';
+  gptDiv.style.minWidth = '300px';
+  gptDiv.style.minHeight = '250px';
+  document.body.appendChild(gptDiv);
+
+  var gptScriptInline2 = document.createElement('script');
+  gptScriptInline2.innerHTML = `
+    googletag.cmd.push(function() {
+      googletag.display('div-gpt-ad-1695468435581-0');
+      let image = new Image()
+      image.src = "https://trac-b0.performoo.com/capture?ed=3BRsqtVZBLO+2W2QvZcRpQf3ZJYv2tfvp9hE3clGYXfrXbddGL6Z6JVqY/qC3zQYdO6/M6Hf98zr9kxdMxVep2ocAt4rsBcz2MlXzbLJ94A=&action=Passback&srcURL=https://cardekho.com&purl=https://cardekho.com&event=adtag"
+    });
+  `;
+  gptDiv.appendChild(gptScriptInline2);
+})();
+</script>
