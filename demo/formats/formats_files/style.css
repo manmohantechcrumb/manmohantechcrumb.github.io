@@ -1,0 +1,118 @@
+#dragEl_2413 {
+    position: absolute !important;
+    width: 200px !important;
+    height: 167px !important;
+    background-image: url(empty.png) !important;
+}
+
+#closeBtn_2413 {
+    position: absolute !important;
+    width: 24px !important;
+    height: 24px !important;
+    top: -5px !important;
+    right: -5px !important;
+    background-image: url(closeBtn.png) !important;
+    cursor: pointer !important;
+}
+
+#wrapper_2413 {
+    position: absolute !important;
+    width: 200px !important;
+    height: 167px !important;
+    overflow: hidden !important;
+    text-overflow: clip !important;
+}
+
+#canvas_2413 {
+    position: absolute !important;
+    width: 200px !important;
+    height: 167px !important;
+}
+
+/*#bg1_2413 {
+    position: absolute !important;
+    width: 150px !important;
+    height: 150px !important;
+    background-image: url(bg1.png) !important;
+}*/
+/*
+.bg_2413 {
+
+}*/
+
+/*#can_2413 {
+    position: absolute !important;
+    width: 550px !important;
+    height: 150px !important;
+    background-image: url(can.png) !important;
+}
+*/
+#sc_wrapper_2413 {
+    width: 200px !important;
+    height: 167px !important;
+    position: absolute !important;
+}
+
+#shake_text_2413 {
+    position: absolute !important;
+    width: 200px !important;
+    height: 167px !important;
+    /*background-image: url(shake_text.png) !important;*/
+}
+
+#cta_2413 {
+    position: absolute !important;
+    width: 200px !important;
+    height: 167px !important;
+    /*background-image: url(cta.png) !important;*/
+}
+
+#next_2413 {
+    position: absolute !important;
+    width: 200px !important;
+    height: 167px !important;
+    /*background-image: url(next.png) !important;*/
+}
+
+
+#ad_2413 {
+    width: 200px !important;
+    height: 167px !important;
+    position: fixed !important;
+    /*margin: 0 auto 40px !important;*/
+    border: 0px solid #CCC !important;
+    -webkit-perspective: 1000px !important;
+    -moz-perspective: 1000px !important;
+    -o-perspective: 1000px !important;
+    perspective: 1000px !important;
+    z-index: 9999999 !important;
+/*    right: 5% !important;
+    bottom: 2% !important;*/
+    cursor: grab !important;
+
+  /*  top: 0px !important;
+    left: 0px !important;*/
+    right: 14px;
+    bottom: 14px;
+    /*top: 50%;*/
+    /*overflow: hidden !important;*/
+    /*text-overflow: clip !important;*/
+    border-radius: 5px !important;
+}
+
+
+
+
+.rct {
+    width: 200px !important;
+    height: 167px !important;
+    position: absolute !important;
+}
+
+.noDisplay {
+    display: none !important;
+}
+
+.noEvents{
+  pointer-events: none !important;
+}

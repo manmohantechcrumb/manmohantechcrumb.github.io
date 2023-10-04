@@ -1,0 +1,230 @@
+
+Capture URLS:
+adtag:
+https://trac-qa.performoo.com/capture?type=&action=INIT_VAST&ed=OaKG/wvQ5WQaYVktUEm9vIIxNuU/5SsvU8R54p3GfrW2YAIQtMj7SDApw2wc/ez/qbsMHib58hvfoSfeYdDnYaom1kQvp9/Uhzej18vpGs6JQLigBYLeYzKPC4bb3Wl504HL5Wd+lpc//K+NogfDw82EXWiXnDfqECKhPpijIh8CbydvbqaMtRg3OOFW7+kMzk8i14WzQF2TappjH/4ZTkknW2hgFma333p7J2PBhjttgdQQ27/Ggulq0NacyWns&event=adtag&elapsedSeconds=0.3&srcURL=qa.performoo.com&purl=https%3A%2F%2Fqa.performoo.com%2Fui%2Fpreview%2Findex%2F8a8080df86eabdf70186ead880b00026&tagID=d0uSDqy3&labelTagID=d0uSD829&cat1=ui&cat2=preview&cat3=index&cacheBuster=1686390899695&tzName=Asia/Calcutta&tzOffset=-330
+
+
+Form:
+https://trac-qa.performoo.com/capture?action=Load&ed=OaKG/wvQ5WQaYVktUEm9vIIxNuU/5SsvU8R54p3GfrW2YAIQtMj7SDApw2wc/ez/qbsMHib58hvfoSfeYdDnYeV2Rk0DR7hPnUIlHvIW0QDydNAt5JL/m/iZ+l8W+ozboDlHdEyB3/lrMxjPkWrwRrWiAkTpcJ29MVfIpsTMQNcFLybt8ARQ2LHTCqjM7UQ1&event=form&elapsedSeconds=null&srcURL=qa.performoo.com&purl=https%3A%2F%2Fqa.performoo.com%2Fui%2Fpreview%2Findex%2F8a8080df86b77d4a0186c65a422a11e0&tagID=&labelTagID=&cat1=ui&cat2=preview&cat3=index&cacheBuster=1686390980041&tzName=Asia/Calcutta&tzOffset=-330
+
+
+advideo:
+https://trac-qa.performoo.com/capture?type=&action=Load&ed=OaKG/wvQ5WQaYVktUEm9vIIxNuU/5SsvU8R54p3GfrW2YAIQtMj7SDApw2wc/ez/qbsMHib58hvfoSfeYdDnYeV2Rk0DR7hPnUIlHvIW0QDydNAt5JL/m/iZ+l8W+ozbj+5v8rLfxd0fHGcZdJCfbYcCggyXfjpCZI0NQjWlz9Y=&event=advideo&elapsedSeconds=-1&srcURL=qa.performoo.com&purl=https%3A%2F%2Fqa.performoo.com%2Fui%2Fpreview%2Findex%2F8a8080df86b77d4a0186c65a422a11e0&tagID=&labelTagID=&cat1=ui&cat2=preview&cat3=index&cacheBuster=1686390972251&tzName=Asia/Calcutta&tzOffset=-330
+
+
+survey:
+https://trac-qa.performoo.com/capture?questionId=8a8080df88a3b8350188a4bdc2ed0208&surveyId=8a8080df88a3b8350188a4bdc2ed0207&action=Load&ed=OaKG/wvQ5WQaYVktUEm9vIIxNuU/5SsvU8R54p3GfrVpiyuiXfPdm0t2EcuJSNw3LvZ81q1l6tNEYVPtKAycKrWiAkTpcJ29MVfIpsTMQNcQLKVuSkNW4g2M86nOy7Yi&event=survey&elapsedSeconds=null&srcURL=qa.performoo.com&purl=https%3A%2F%2Fqa.performoo.com%2Fui%2Fpreview%2Findex%2F8a8080df86efa9e0018775ba114835c0&tagID=&labelTagID=&cat1=ui&cat2=preview&cat3=index&cacheBuster=1686391094485&tzName=Asia/Calcutta&tzOffset=-330
+
+widget:
+https://trac-qa.performoo.com/capture?ed=OaKG/wvQ5WQaYVktUEm9vIIxNuU/5SsvU8R54p3GfrW2YAIQtMj7SDApw2wc/ez/ZMALChIO/gGWViHwCN3O3VcOneEW0cBzLv1Hnl7NOInk2jNq7OJ2OM/aoawaTCDAhyUy258G9U9lKNlKRXCdmQ==&action=Init&srcURL=qa.performoo.com&purl=https%3A%2F%2Fqa.performoo.com%2Fui%2Fpreview%2Findex%2F8a8080df8841e6280188426ad6e50136&cat1=ui&cat2=preview&cat3=index&slotPosType=p1&event=widget
+
+Video:
+https://trac-qa.performoo.com/capture?type=&action=Load&ed=eA9aM3rETEUM6yZLlb4u+8j6b6gAwrAQYpIPuY5nE1E2I6pN1appisD9ME9oVspqY8Jpy5CqDkDXH5cYllC97tGb/QaHaXPGy5ZHelxlMW0Aj83U4Ml2Uuy/viqZAKTu+jFpgPMRNErbCoJZZ7w8+Zxs4856nHPAHJV2MwBVqb3BB8YwK5rhE+RWhsCNumbD1Q6gUpUFCx9it7i5OXAPsFqBvPMl5oBIs7Cg/fJ4rQrQmz6FEQwTNVMW7Wqdan71iBBjRhehjFI+F90kaV6xrQ==&event=video&elapsedSeconds=-1&srcURL=qa.performoo.com&purl=https%3A%2F%2Fqa.performoo.com%2Fui%2Fpreview%2Findex%2F8a8080df87851f14018785354b590079&tagID=&labelTagID=&cat1=ui&cat2=preview&cat3=index&cacheBuster=1686391246151&tzName=Asia/Calcutta&tzOffset=-330
+
+
+Old Druid Query:
+Adtag:
+{
+  "filter": {
+    "fields": [
+      {
+        "type": "selector",
+        "dimension": "tagid",
+        "value": "d0uSDqy3"
+      },
+      {
+        "type": "selector",
+        "dimension": "action",
+        "value": "INIT_VAST"
+      }
+    ],
+    "type": "and"
+  },
+  "intervals": "2023-06-10T00:00:00.000Z/2023-06-10T23:59:59.999Z",
+  "granularity": "all",
+  "timeZone": "UTC",
+  "dataSource": "adtag",
+  "aggregations": [
+    {
+      "name": "count",
+      "fieldName": "count",
+      "type": "longSum"
+    }
+  ],
+  "queryType": "groupBy",
+  "dimensions": [
+    "action"
+  ]
+}
+
+Form:
+{
+  "filter": {
+    "fields": [
+      {
+        "type": "selector",
+        "dimension": "formid",
+        "value": "8a8080df88a3b8350188a4bc059a0202"
+      },
+      {
+        "type": "selector",
+        "dimension": "action",
+        "value": "Load"
+      }
+    ],
+    "type": "and"
+  },
+  "intervals": "2023-06-10T00:00:00.000Z/2023-06-10T23:59:59.999Z",
+  "granularity": "all",
+  "timeZone": "UTC",
+  "dataSource": "form",
+  "aggregations": [
+    {
+      "name": "count",
+      "fieldName": "count",
+      "type": "longSum"
+    }
+  ],
+  "queryType": "groupBy",
+  "dimensions": [
+    "action"
+  ]
+}
+
+
+advideo:
+{
+  "filter": {
+    "fields": [
+      {
+        "type": "selector",
+        "dimension": "adid",
+        "value": "d0o_HPvF"
+      },
+      {
+        "type": "selector",
+        "dimension": "action",
+        "value": "Load"
+      }
+    ],
+    "type": "and"
+  },
+  "intervals": "2023-06-10T00:00:00.000Z/2023-06-10T23:59:59.999Z",
+  "granularity": "all",
+  "timeZone": "UTC",
+  "dataSource": "advideo",
+  "aggregations": [
+    {
+      "name": "count",
+      "fieldName": "count",
+      "type": "longSum"
+    }
+  ],
+  "queryType": "groupBy",
+  "dimensions": [
+    "action"
+  ]
+}
+
+survey:
+{
+  "filter": {
+    "fields": [
+      {
+        "type": "selector",
+        "dimension": "surveyid",
+        "value": "8a8080df88a3b8350188a4bdc2ed0207"
+      },
+      {
+        "type": "selector",
+        "dimension": "action",
+        "value": "Load"
+      }
+    ],
+    "type": "and"
+  },
+  "intervals": "2023-06-10T00:00:00.000Z/2023-06-10T23:59:59.999Z",
+  "granularity": "all",
+  "timeZone": "UTC",
+  "dataSource": "survey",
+  "aggregations": [
+    {
+      "name": "count",
+      "fieldName": "count",
+      "type": "longSum"
+    }
+  ],
+  "queryType": "groupBy",
+  "dimensions": [
+    "action"
+  ]
+}
+
+
+Widget:
+{
+    "filter": {
+      "fields": [
+        {
+          "type": "selector",
+          "dimension": "widgetid",
+          "value": "d1kylgoZ"
+        },
+        {
+          "type": "selector",
+          "dimension": "action",
+          "value": "Init"
+        }
+      ],
+      "type": "and"
+    },
+    "intervals": "2023-06-10T00:00:00.000Z/2023-06-10T23:59:59.999Z",
+    "granularity": "all",
+    "timeZone": "UTC",
+    "dataSource": "widget",
+    "aggregations": [
+      {
+        "name": "count",
+        "fieldName": "count",
+        "type": "longSum"
+      }
+    ],
+    "queryType": "groupBy",
+    "dimensions": [
+      "action"
+    ]
+  }
+
+  Video:
+  {
+      "filter": {
+        "fields": [
+          {
+            "type": "selector",
+            "dimension": "videoid",
+            "value": "8a8080df87851f14018785354b590079"
+          },
+          {
+            "type": "selector",
+            "dimension": "action",
+            "value": "Load"
+          }
+        ],
+        "type": "and"
+      },
+      "intervals": "2023-06-10T00:00:00.000Z/2023-06-10T23:59:59.999Z",
+      "granularity": "all",
+      "timeZone": "UTC",
+      "dataSource": "video",
+      "aggregations": [
+        {
+          "name": "count",
+          "fieldName": "count",
+          "type": "longSum"
+        }
+      ],
+      "queryType": "groupBy",
+      "dimensions": [
+        "action"
+      ]
+    }

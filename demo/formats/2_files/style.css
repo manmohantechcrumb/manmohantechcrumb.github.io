@@ -1,0 +1,186 @@
+html,
+body {
+    overscroll-behavior-y: contain;
+}
+
+#ad_2413 {
+    width: 150px !important;
+    height: 150px !important;
+    position: fixed !important;
+    /*margin: 0 auto 40px !important;*/
+    border: 0px solid #CCC !important;
+    -webkit-perspective: 1000px !important;
+    -moz-perspective: 1000px !important;
+    -o-perspective: 1000px !important;
+    perspective: 1000px !important;
+    z-index: 9999999 !important;
+/*    right: 5% !important;
+    bottom: 2% !important;*/
+    cursor: grab !important;
+    background-color: none !important;
+    margin: 0px !important;
+    padding: 0px !important;
+
+  /*  top: 0px !important;
+    left: 0px !important;*/
+    right: 34px;
+    bottom: 22px;
+    /*overflow: hidden !important;*/
+    /*text-overflow: clip !important;*/
+    border-radius: 5px !important;
+}
+
+#dragEl_2413 {
+    position: absolute !important;
+    /*width: 150px !important;*/
+    height: 150px !important;
+    width: 190px !important;
+    margin-left: -20px !important;
+    background-image: url(empty.png) !important;
+    right: -10px;
+    top: 6px;
+}
+
+#closeBtn_2413 {
+    position: absolute !important;
+    width: 24px !important;
+    height: 24px !important;
+    top: -5px !important;
+    right: -5px !important;
+    background-image: url(closeBtn.png) !important;
+    cursor: pointer !important;
+}
+
+#wrapper_2413 {
+    position: absolute !important;
+    /*width: 115px !important;*/
+    width: 150px !important;
+    height: 150px !important;
+    /*overflow: hidden !important;*/
+    /*text-overflow: clip !important;*/
+}
+
+#canvas_2413 {
+    position: absolute !important;
+    width: 150px !important;
+    height: 150px !important;
+}
+
+#box_2413 {
+    position: absolute !important;
+    width: 600px !important;
+    height: 350px !important;
+}
+#scaleCont_2413 {
+    position: absolute !important;
+    width: 150px !important;
+    height: 150px !important;
+}
+
+#stick_2413 {  
+    width: 104px !important;
+    height: 191px !important;
+    left: 490px !important;
+    top: 77px !important;
+    position: absolute !important;
+    background-image: url(stick.png) !important;
+    background-repeat: no-repeat;
+}
+#boxBack_2413 {   background-image: url(box_bg.png) !important;   }
+#boxFront_2413 {   background-image: url(box.png) !important;   }
+
+.fs_2413 {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#spin_text_2413 {   background-image: url(spin_text.png) !important;   }
+#cta_2413 {   background-image: url(cta.png) !important;   }
+
+#end_2413 {   
+    background-image: url(end.png) !important;   
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: -15px;
+}
+
+#cursor_2413 {   
+    position: absolute !important;
+    width: 75px !important;
+    height: 91px !important;
+    background-image: url(cursor.png) !important;   
+}
+#text_2413 {   
+    position: absolute !important;
+    background-image: url(text.png) !important; 
+    background-size:contain;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    width: 200px !important;
+    height: 167px !important;
+    right: -8px;
+}
+
+#coinCont_2413 {
+    position: absolute !important;
+    width: 100% !important;
+    height: 140px !important;
+    top: 150px !important;
+    overflow: hidden !important;
+    text-overflow: clip !important;
+}
+
+.fruits_2413 {
+    position: absolute !important;
+    width: 120px !important;
+    height: 120px !important;
+    background-image: url(fruits.png) !important;
+    overflow: hidden !important;
+    text-overflow: clip !important;
+    left: 120px !important;
+    top: -95px !important;
+}
+
+#f1_2413 {
+    
+}
+
+#f2_2413 {
+    margin-left: 115px !important;
+}
+
+#f3_2413 {
+    margin-left: 230px !important;
+}
+
+#f5_2413 {
+    margin-left: 115px !important;
+}
+
+#f6_2413 {
+    margin-left: 230px !important;
+}
+
+#sc_wrapper_2413 {
+    width: 150px !important;
+    height: 150px !important;
+    position: absolute !important;
+}
+
+
+
+
+.rct {
+    width: 150px !important;
+    height: 150px !important;
+    position: absolute !important;
+}
+
+.noDisplay {
+    display: none !important;
+}
+
+.noEvents{
+  pointer-events: none !important;
+}

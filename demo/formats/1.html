@@ -1,0 +1,550 @@
+
+<!-- saved from url=(0078)https://eskimi-creatives.com/rm-projects/FloatingRMs/tilisi_running_man_float/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="./1_files/style.css">
+  <script src="./1_files/jquery.min.js"></script>
+  <script src="./1_files/CustomEase.min.js"></script>
+  <script src="./1_files/gsap.min.js"></script>
+<link href="./1_files/style.css" rel="stylesheet" type="text/css"></head>
+
+<body style="margin: 0; padding: 0" data-await-observable="">
+  
+
+  <script>
+    // V A R S
+    // m a i n
+    var _document;
+    var _window;
+    var iframe;
+
+    // e l e m e n t s
+    var o = {};
+    o.container = document.getElementById("ad_2413");
+    o.closeBtn = document.getElementById("closeBtn_2413");
+    o.shadow = document.getElementById("shadow_2413");
+    o.cta = document.getElementById("cta_2413");
+    o.ball = document.getElementById("ball_2413");
+    o.dragEl = document.getElementById("dragEl_2413");
+    o.ball_cont = document.getElementById("ball_cont_2413");
+    o.cta_cont = document.getElementById("cta_cont_2413");
+
+    // l o c a l
+
+    var ad_s = 1;
+
+    var ddef = {
+      ft: true,
+      ftClick: true,
+      globalScale: 0.32,
+      adEnd: false,
+      cokeStarted: false,
+      drag: {
+        x: 0,
+        y: 0,
+        lx: 0,
+        ly: 0,
+        dx: 0,
+        dy: 0,
+      },
+      screen: {
+        w: 0,
+        h: 0,
+        x: 0,
+        y: 0,
+      },
+      w: 150,
+      h: 150,
+      canvas: null,
+      ctx: null,
+      circles: {
+        amm: 14,
+        list: [],
+        posRed: 0.8, // pos reduce into center
+      },
+      circles2: {
+        amm: 30,
+        list: [],
+        posRed: 0.8, // pos reduce into center
+      },
+      can: {
+        rot: 0,
+        drot: 0,
+        mx: 0,
+        my: 0,
+        x: 50,
+        y: 17,
+        w: 46,
+        h: 99,
+      },
+      shakeCalc: {
+        list: new Array(30),
+      },
+    };
+    // ddef.circles.list = new Array(ddef.circles.amm)
+
+    function initIFrame() {
+      setCss();
+      goOut();
+      prepScrollControl();
+
+      setTimeout( function(){
+        screenCanvas();
+        events();
+
+        // loop();
+        initDrag();
+        initAnim();
+
+        onResize();
+        getGlobalS();
+      }, 2000);
+    }
+
+    function getGlobalS() {
+      // var maz = ddef.screen.w < ddef.screen.h ? ddef.screen.w : ddef.screen.h;
+      // // ad_s = (ddef.globalScale * maz) / ddef.w;
+      // if (ad_s > 1) ad_s = 1;
+      // // console.l/og(ad_s)
+
+      // var maz = (ddef.screen.w < ddef.screen.h) ? ddef.screen.w : ddef.screen.h;
+      // ad_s = 0.35 * maz / 150;
+      // if(ad_s>1) ad_s = 1;
+      ad_s = 1;
+    }
+
+    function events() {
+      ddef.screen.w = _window.innerWidth;
+      ddef.screen.h = _window.innerHeight;
+      _window.addEventListener("resize", onResize);
+    }
+
+    var ad_s = 1;
+
+    function onResize() {
+      var w = _window.innerWidth;
+      var h = _window.innerHeight;
+      var c = ddef.canvas;
+
+      c.width = w;
+      c.height = h;
+      c.style.width = w;
+      c.style.height = h;
+      ddef.screen.w = w;
+      ddef.screen.h = h;
+
+      // console.log(ddef.screen.w, ddef.screen.h);
+    }
+
+    function screenCanvas(){
+      var c = document.createElement("CANVAS");
+      c.width = _window.innerWidth;
+      c.height = _window.innerHeight;
+      c.style.width = _window.innerWidth;
+      c.style.height = _window.innerHeight;
+      c.style.position = "fixed";
+      c.style.zIndex = 9999998;
+      c.style.top = "0px";
+      c.style.bottom = "0px";
+      c.style.left = "0px";
+      c.style.right = "0px";
+      c.style.pointerEvents = "none";
+
+      ddef.canvas = c;
+      ddef.ctx = c.getContext("2d");
+
+      var body = _document.getElementsByTagName("body")[0];
+      body.appendChild(c);
+    }
+
+    function initCircles() {
+      for (var i = 0; i < ddef.circles.amm; i++) {
+        ddef.circles.list.push({});
+        createCircle(i);
+      }
+    }
+
+    function initAnim() {
+      // gsap.set(o.container, { scale: ad_s, transformOrigin: "100% 100%" });
+      gsap.set(o.container, {
+        scale: 1,
+        transformOrigin: "100% 100%"
+      });
+
+      var bs = 440;
+      var s = 0.28;
+      var dist = ddef.screen.w / ad_s;
+      var rot = dist / 1.5;
+      var dur = dist / 500;
+      var x = -dist;
+
+      o.ball_cont.style.width = bs * s + "px";
+      o.ball_cont.style.height = bs * s + "px";
+      o.cta_cont.style.width = 636 * s + "px";
+      o.cta_cont.style.height = 633 * s + "px";
+
+      gsap.set(o.ball, {
+        opacity: 1
+      });
+      gsap.set(o.shadow, {
+        opacity: 1
+      });
+
+      gsap.set([o.cta, o.shadow, o.ball], {
+        scale: s,
+        transformOrigin: "0% 0%",
+      });
+
+      gsap.from([o.ball_cont, o.shadow], dur, {
+        x: x
+      });
+      gsap.from(o.ball_cont, dur, {
+        // rotation: -rot,
+        onComplete: function() {
+          if (!ddef.adEnd) {
+            setTimeout(() => {
+              initAnim();
+            }, 3000);
+            gsap.set(o.cta, {
+              opacity: 1
+            });
+            gsap.from(o.cta_cont, {
+              scale: 0,
+              ease: "back.out",
+              transformOrigin: "40% 85%",
+            });
+
+            ddef.toggleTl = gsap.timeline({
+              delay: 1.5,
+              repeat: 30,
+              repeatDelay: 2,
+            });
+
+            // ddef.toggleTl
+            //   .to(o.ball, 0.2, { y: -30, ease: "power1.in" })
+            //   .to(o.ball, 0.4, { y: 0, ease: "bounce.out" })
+            //   .to(
+            //     o.shadow,
+            //     0.2,
+            //     { opacity: 0.8, x: 8, y: 6, ease: "power1.in" },
+            //     0
+            //   )
+            //   .to(o.shadow, 0.2, { opacity: 1, x: 0, y: 0 }, 0.2);
+          }
+        },
+      });
+    }
+
+    function endAnim() {
+      var dist = ddef.drag.x / ad_s;
+      var ax = -dist + 250;
+      var ease = "power1.in";
+      // console.log(x);
+
+      var gr = 0.7;
+      var rot = -Math.abs(ax) / 1.5;
+      var dur = gr * (Math.abs(ax) / 500);
+
+      // console.log( rot, dur )
+
+      gsap.to(o.cta_cont, 0.35, {
+        scale: 0,
+        ease: "back.in",
+        transformOrigin: "40% 85%",
+      });
+
+      gsap.to([o.ball_cont, o.shadow], dur, {
+        x: ax,
+        ease: ease
+      });
+      gsap.to(o.ball_cont, dur, {
+        // rotation: -rot,
+        ease: ease,
+        onComplete: function() {
+          o.container.style.display = "none";
+        },
+      });
+
+      ///////////
+      if (ddef.toggleTl) {
+        ddef.toggleTl.kill();
+        gsap.to(o.shadow, 0.2, {
+          opacity: 1,
+          y: 0
+        });
+        gsap.to(o.ball, 0.2, {
+          y: 0,
+          ease: "bounce.out"
+        });
+      }
+    }
+
+    // SCROLL DISABLE //
+    var $window = null,
+      previousScrollTop = 0,
+      scrollLock = false;
+
+    function prepScrollControl() {
+      $window = $(_window);
+
+      $window.scroll(function(event) {
+        if (scrollLock) {
+          $window.scrollTop(previousScrollTop);
+        }
+      });
+    }
+
+    function disableScroll() {
+      scrollLock = true;
+      previousScrollTop = $window.scrollTop();
+    }
+
+    function enableScroll() {
+      scrollLock = false;
+    }
+
+    // eND
+
+    // OUT //
+    function goOut() {
+      var doc = _document || null,
+        el = document.getElementById("ad_2413");
+      if (!doc || !el) return;
+      _document.body.appendChild(el);
+      if ("__eIntersectionObserver" in window) {
+        window.__eIntersectionObserver.observe(el);
+      }
+    }
+
+    function setCss() {
+      var cssLink = document.createElement("link");
+      cssLink.href = assets_url + "style.css";
+      cssLink.rel = "stylesheet";
+      cssLink.type = "text/css";
+      _window.document.head.appendChild(cssLink);
+    }
+
+    function closeAd() {
+      startEvent("close");
+      gsap.to(o.closeBtn, 0.25, {
+        scale: 0,
+        ease: Back.easeIn,
+        onComplete: function() {
+          /*o.container.style.display = "none";*/
+        },
+      });
+
+      endAnim();
+
+      ddef.adEnd = true;
+    }
+
+    o.closeBtn.addEventListener("click", closeAd);
+
+    (function() {
+      try {
+        var curWindow = window;
+        var myInterval = setInterval(function() {
+          if (curWindow.frameElement == null) {
+            _document = curWindow.document;
+
+            _window = curWindow;
+            clearInterval(myInterval);
+            initIFrame();
+            window.__eFlAdEl = document.getElementById(o.container);
+          } else {
+            iframe = curWindow.frameElement;
+          }
+          curWindow = curWindow.parent;
+        }, 10);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+
+    /// DRAG ///
+
+    function initDrag() {
+      var dragAmm = 0;
+      var dex = 0;
+      var dey = 0;
+      var cx = 0;
+      var cy = 0;
+      var pos1 = 0,
+        pos2 = 0,
+        pos3 = 0,
+        pos4 = 0;
+
+      // dragElement( o.container );
+      dragElement(o.dragEl);
+
+      function dragElement(elmnt) {
+        elmnt.onmousedown = dMouseDown;
+        // var el = o.container;
+        var el = elmnt;
+        el.ontouchstart = dTouchDown;
+
+        function dMouseDown(e) {
+          if (!ddef.adEnd) {
+            e = e || _window.event;
+            // e.preventDefault();
+
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+
+            dragMouseDown(e);
+          }
+        }
+
+        function dTouchDown(e) {
+          e = e || _window.event;
+          // e.preventDefault();
+
+          // gsap.to(o.can, 0.1, {scale: 0.9, ease: Power2.easeOut})
+
+          pos3 = e.touches[0].clientX;
+          pos4 = e.touches[0].clientY;
+
+          dragMouseDown(e);
+        }
+
+        function dragMouseDown(e) {
+          disableScroll();
+
+          if (ddef.ft) {
+            startEvent("started");
+            ddef.ft = false;
+          }
+
+          dragAmm = 0;
+          _document.onmouseup = closeDragElement;
+          _document.ontouchend = closeDragElement;
+          _document.onmousemove = mouseDrag;
+          _document.ontouchmove = touchDrag;
+        }
+
+        function mouseDrag(e) {
+          e = e || _window.event;
+          // e.preventDefault();
+          elementDrag(e, true);
+        }
+
+        function touchDrag(e) {
+          e.stopImmediatePropagation();
+
+          elementDrag(e, false);
+        }
+
+        var sPos = {
+          x: 0,
+          y: 0
+        };
+        var cPos = {
+          x: 0,
+          y: 0
+        };
+
+        function elementDrag(e, isMouse) {
+          dragAmm++;
+          var clientX = isMouse ? e.clientX : e.touches[0].clientX;
+          var clientY = isMouse ? e.clientY : e.touches[0].clientY;
+
+          pos1 = pos3 - clientX;
+          pos2 = pos4 - clientY;
+          pos3 = clientX;
+          pos4 = clientY;
+
+          cPos.x += sPos.x - pos1;
+          cPos.y += sPos.y - pos2;
+
+          var x = cPos.x;
+          var y = cPos.y;
+
+          ddef.drag.x = x;
+          ddef.drag.y = y;
+
+          // o.container.style.marginRight = -x + "px";
+          // o.container.style.marginBottom = -y + "px";
+          o.container.style.right = 25 - x + "px";
+          o.container.style.bottom = 25 - y + "px";
+        }
+
+        function closeDragElement(e) {
+          enableScroll();
+          if (dragAmm <= 2 && click == 0) {
+            // console.log("CTA")
+            // if(ddef.ftClick){
+            // startCoke();
+            // ddef.ftClick = false;
+            // } else {
+            ctaFunction();
+            // }
+            click = 1;
+            setTimeout(function() {
+              click = 0;
+            }, 1000);
+          } else {}
+          // gsap.to(o.can, 0.1, {scale: 1, ease: Power2.easeOut})
+          _document.onmouseup = null;
+          _document.onmousemove = null;
+          _document.ontouchend = null;
+          _document.ontouchmove = null;
+        }
+
+        var click = 0;
+      }
+    }
+
+    // Eskimi Def
+
+    var _dsptr = function(e) {
+      var track = new Image();
+      track.src = "{EVENT_URL}" + e;
+    };
+
+    function ctaFunction() {
+      _window.open("{CLICK_URL}");
+    }
+
+    function startEvent(event_name) {
+      _dsptr(event_name);
+    }
+    var assets_url = "images/";
+
+    // f
+
+    window.requestAnimFrame = (function() {
+      return (
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function( /* function */ callback, /* DOMElement */ element) {
+          window.setTimeout(callback, 1000 / 60);
+        }
+      );
+    })();
+  </script>
+
+
+
+<section id="ad_2413" class="container" style="transform-origin: 100% 100%; transform: translate(0px, 0px);">
+    <div id="shadow_2413" style="opacity: 1; transform-origin: 0% 0%; transform: translate3d(-37.147px, 0px, 0px) scale(0.28, 0.28);"></div>
+    <!-- <img src="images/logo.png" class="logo" alt="" /> -->
+    <img src="./1_files/house.jpg" alt="" class="house">
+    <div id="ball_cont_2413" style="position: absolute; width: 123.2px; height: 123.2px; transform: translate3d(-37.147px, 0px, 0px);">
+      <div id="ball_2413" style="opacity: 1; transform-origin: 0% 0%; transform: scale(0.28, 0.28);">
+        <img src="./1_files/runningman.gif" alt="">
+      </div>
+    </div>
+    <div id="cta_cont_2413" style="position: absolute; width: 178.08px; height: 177.24px; transform-origin: 40% 85%; transform: translate(0px, 0px);">
+      <div id="cta_2413" style="opacity: 1; transform-origin: 0% 0%; transform: scale(0.28, 0.28);">
+        <p>Learn More</p>
+      </div>
+    </div>
+
+    <div id="dragEl_2413"></div>
+    <div id="closeBtn_2413"></div>
+  </section><canvas width="1862" height="948" style="width: 1862px; height: 948px; position: fixed; z-index: 9999998; inset: 0px; pointer-events: none;"></canvas></body></html>
