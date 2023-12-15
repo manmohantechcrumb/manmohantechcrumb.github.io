@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function getTopWindowUrl() {
+      let currentWindow = window;
+
+      // Traverse through the parent hierarchy until reaching the top window
+      while (currentWindow !== window.top) {
+        currentWindow = currentWindow.parent;
+      }
+
+      // Access the location property of the top window to get its URL
+      let topWindowUrl = currentWindow.location.href;
+
+      // Log or use the top window URL as needed
+      console.log("Top Window URL: ", topWindowUrl);
+    }
+
+    const pageUrl = getTopWindowUrl()
+    var outbrainDiv = document.createElement("div");
+    outbrainDiv.classList.add("OUTBRAIN");
+    outbrainDiv.dataset.obContenturl = pageUrl || "[HARDCODED URL]";
+    outbrainDiv.dataset.widgetId = "AR_2";
+    outbrainDiv.dataset.obInstallationKey = "INPDL1PO9QQ4O6F15J7AKJ9EA";
+
+    // Create the script element
+    var outbrainScript = document.createElement("script");
+    outbrainScript.type = "text/javascript";
+    outbrainScript.async = "async";
+    outbrainScript.src = "https://widgets.outbrain.com/outbrain.js";
+
+    // Append the div and script elements to the document body
+    document.body.appendChild(outbrainDiv);
+    document.body.appendChild(outbrainScript);
+  </script>
+</body>
+
+</html>
