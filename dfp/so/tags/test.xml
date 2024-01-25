@@ -1,0 +1,31 @@
+<VAST version="3.0">
+<Ad>
+<InLine>
+<AdSystem>Skoda Kushaq - Jan-Feb'24 Wap</AdSystem>
+<AdTitle>Skoda Kushaq - Jan-Feb'24 Wap</AdTitle>
+<Impression/>
+<Creatives>
+<Creative>
+<Linear>
+<Duration>15</Duration>
+<AdParameters>
+<![CDATA[ <Root> <env>b</env> <Ed>3BRsqtVZBLO+2W2QvZcRpQf3ZJYv2tfvp9hE3clGYXfrXbddGL6Z6JVqY/qC3zQYqbsMHib58hvfoSfeYdDnYboC7/ZZqb2lw1+HBqxdOctXIsES4Ag/Xwb3YkTQE2jCxnccYuYb7TL1V+0M800ZSqC2LVP3pAZ8qkgrCd2KW/c=</Ed> <pURL>https://yaas-b.performoo.com/33.0</pURL> <auURL>https://tags3-b.performoo.com/dXtIWclB/au/d4rpzRDF/data.json</auURL> <netId>dXtIWclB</netId> <auId>d4rpzRDF</auId> <pageURL></pageURL> </Root> ]]>
+data-ext_height=%%HEIGHT%%  data-ext_width=%%WIDTH%% data-ext_device=%%ADVERTISING_IDENTIFIER_PLAIN%%  data-ext_device_type=%%ADVERTISING_IDENTIFIER_TYPE%%  data-ext_curl=%%CLICK_URL_UNESC%% data-ext_desc_url=%%DESCRIPTION_URL_UNESC%% data-ext_site_url=%%SITE%%
+</AdParameters>
+<MediaFiles>
+<MediaFile type="application/javascript" bitrate="1500" width="600" height="400" delivery="progressive" apiFramework="VPAID">
+<![CDATA[ https://yaas-b.performoo.com/33.0/tcvpaid.js ]]>
+</MediaFile>
+</MediaFiles>
+</Linear>
+</Creative>
+</Creatives>
+</InLine>
+</Ad>
+</VAST>
+
+https://performoo-content.s3.ap-south-1.amazonaws.com/dXtIUTyJ/au/gd65xshpI/test.xml?data-ext_height=%%HEIGHT%%&data-ext_width=%%WIDTH%%&data-ext_device=%%ADVERTISING_IDENTIFIER_PLAIN%%&data-ext_device_type=%%ADVERTISING_IDENTIFIER_TYPE%%&data-ext_curl=%%CLICK_URL_UNESC%%&data-ext_desc_url=%%DESCRIPTION_URL_UNESC%%&data-ext_site_url=%%SITE%%
+
+https://performoo-content.s3.ap-south-1.amazonaws.com/dXtIUTyJ/au/gd65xshpI/test.xml?data-ext_height=[HEIGHT]&data-ext_width=[WIDTH]&data-ext_device=[ADVERTISING_IDENTIFIER_PLAIN]&data-ext_device_type=[ADVERTISING_IDENTIFIER_TYPE]&data-ext_curl=[CLICK_URL_UNESC]&data-ext_desc_url=[DESCRIPTION_URL_UNESC]&data-ext_site_url=[SITE]
+
+<script src="https://tags3-b.performoo.com/dXtIWclB/am/MXIVBupW/tag.js" data-ext_height="%%HEIGHT%%" data-ext_width="%%WIDTH%%" data-ext_device="%%ADVERTISING_IDENTIFIER_PLAIN%%"  data-ext_device_type="%%ADVERTISING_IDENTIFIER_TYPE%%" data-ext_curl="%%CLICK_URL_UNESC%%" data-ext_desc_url="%%DESCRIPTION_URL_UNESC%%" data-ext_site_url="%%SITE%%"></script>
