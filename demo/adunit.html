@@ -80,7 +80,321 @@
             DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED
         </p>
         <h1> below is the tag (for outstream test) </h1>
-        <script src="https://tags3-b.performoo.com/dXtIUTeT/au/gggtd8Itk/tag.js"></script>
+        <script>
+            var _tcVastTag = typeof tcVastOSTag !== "undefined" ? tcVastOSTag : '';
+            (function () {
+                new Image().src = "https://trac-b0.performoo.com/capture?action=cust2&event=track&ed=3BRsqtVZBLO+2W2QvZcRpXUORC74zTnSzLhZmnwLvq75RR6SXV2PK14io5dKOmzlCAyOeGH4XL/UM/0ZobWMp5fH3a5aplf721K9bEvPwhQ=&cacheBuster=" + new Date().getTime();
+                /*!
+                   YAAS Player
+                   Copyright (c) 2023, YAAS Player, Performoo, All Rights Reserved
+                   This source code and its use and distribution is subject to the terms
+                   and conditions of the applicable license agreement.
+                   https://media-b.performoo.com/tos/performoo-terms-of-services-mar172021.html
+                   This product includes portions of other software. For the EULA (End User Level Agreement) see ..
+                   https://media-b.performoo.com/eula/performoo-eula-dec292021.html
+                */
+
+                var loadTag = async function (params) {
+                    var TC_ERROR = "Error"
+                    var TC_ERROR_NO_SLOT = "Error_NoSlot"
+
+                    var tcYaas = {
+                        setup: function setup(i) {
+                            var src = i.playerURL,
+                                d = document,
+                                w = window;
+
+                            if (!i.playInCurrentFrame) {
+                                d = top.document;
+                                w = top;
+                            }
+
+                            if (i.config && i.config.isMonitoring && !i.tagTriggerAttempt) {
+                                var currentScriptTag = document?.currentScript;
+                                var dataAttValMap = (currentScriptTag === null || currentScriptTag === void 0 ? void 0 : currentScriptTag.dataset) || {};
+                                var extraParamObj = {
+                                    cuid: i.extraParams.cuid,
+                                    usid: i.extraParams.usid,
+                                    playerid: adSlotId,
+                                    loopCount: 0
+                                }
+                                for (var dataKey in dataAttValMap) extraParamObj[dataKey] = encodeURIComponent(dataAttValMap[dataKey])
+                                delete extraParamObj?.curl
+                                this.captureEvent(i, "Session", extraParamObj);
+                                this.captureEvent(i, "cust1", extraParamObj, "track");
+                            }
+
+                            i.tagtriggerTime = new Date().getTime();
+                            var perfSlotSelectorList = i.slotSelector;
+                            if (!i.slotSelector instanceof Array) {
+                                perfSlotSelectorList = [i.slotSelector];
+                            }
+                            perfSlotSelectorList = perfSlotSelectorList.filter(ele => !!ele.selector && ele.selector.length > 0);
+
+                            var hooks = i.config.hooks || []
+                            var hook = hooks.find((ele) => ele.type == 1)
+
+                            var newAdSlotEle = d.createElement('div');
+                            newAdSlotEle.setAttribute("id", i.adSlotId);
+
+                            if (hook && hook.data) {
+                                hook.data = hook.data.replace("[HOOK]", i.adSlotId)
+                                eval(hook.data)
+                                var pfRefNode = TC_YAAS["hook1_" + i.adSlotId]()
+                                if (pfRefNode) {
+                                    var adSlotEle = d.getElementById(i.adSlotId);
+                                    if (adSlotEle) {
+                                        adSlotEle.parentNode.removeChild(adSlotEle)
+                                    }
+                                    pfRefNode.parentNode.insertBefore(newAdSlotEle, pfRefNode.nextSibling);
+                                    loadScript();
+                                }
+                            } else if (!!perfSlotSelectorList && perfSlotSelectorList.length > 0) {
+                                var adSlotEle = d.getElementById(i.adSlotId);
+                                if (adSlotEle) {
+                                    adSlotEle.parentNode.removeChild(adSlotEle)
+                                }
+                                var counter = 0; // throw("TCPlayer: Slot position selector not found");
+                                var pfWaitTime = (i?.config.slot?.waitTime || 3) * 2;
+                                var querySelectorInterval = setInterval(function () {
+                                    for (var perfSlotSelectorObj of perfSlotSelectorList) {
+                                        var perfSlotSelector = perfSlotSelectorObj.selector;
+                                        var perfSlotSelectorIndex = perfSlotSelectorObj.index;
+                                        var pfRefNodes = d.querySelectorAll(perfSlotSelector);
+
+                                        if (pfRefNodes && pfRefNodes.length > perfSlotSelectorIndex) {
+                                            clearInterval(querySelectorInterval);
+                                            perfSlotSelectorIndex = !!perfSlotSelectorIndex ? parseInt(perfSlotSelectorIndex) : 0;
+                                            var pfRefNode = pfRefNodes[perfSlotSelectorIndex];
+                                            pfRefNode.parentNode.insertBefore(newAdSlotEle, pfRefNode.nextSibling);
+                                            loadScript();
+                                            break;
+                                        }
+                                    }
+
+                                    counter++;
+                                    if (counter > pfWaitTime) {
+                                        window.clearInterval(querySelectorInterval);
+                                        slotNotFoundHandler();
+                                    }
+                                }, 500);
+                            } else if (!d.getElementById(i.adSlotId)) {
+                                if (self === top || i.playInCurrentFrame) {
+                                    // d.write("<div id='" + i.adSlot + "'></div>");
+                                } else {
+                                    // window.frameElement.parentNode.appendChild(newAdSlotEle);
+                                    window?.top?.document?.body?.appendChild(newAdSlotEle);
+                                }
+
+                                loadScript();
+                            } else {
+                                loadScript();
+                            }
+
+                            function slotNotFoundHandler() {
+                                if (i?.config.slot?.ifNotFound?.slider?.enable === true) {
+                                    newAdSlotEle.setAttribute("data-yaas-slider", "1");
+                                    d.body.appendChild(newAdSlotEle);
+                                    loadScript();
+                                    // tcYaas.captureError(TC_ERROR_NO_SLOT, tcYaasConfig, "TCPlayer: Slot position selector not found");
+                                    return;
+                                }
+                                //slot not found
+                                tcYaas.captureError(TC_ERROR_NO_SLOT, tcYaasConfig, "TCPlayer: Slot position selector not found");
+                            }
+
+                            function loadScript() {
+                                if (!d.getElementById(i.adSlot)) {
+                                    tcYaas.captureError(TC_ERROR_NO_SLOT, tcYaasConfig, "TCPlayer: Ad Slot not found");
+                                    return
+                                }
+                                var setupVastOS = function setupVastOS() {
+                                    w.TC_YAAS.setupVastOS({
+                                        i: i,
+                                        tag: i.vastTag,
+                                        src: src
+                                    });
+                                };
+
+                                var script = d.createElement('script');
+                                script.async = 1;
+                                script.src = src + "/tcInitVast.js";
+                                script.onload = setupVastOS;
+                                script.onreadystatechange = setupVastOS;
+                                d.head.appendChild(script);
+                            }
+                        },
+                        captureError: function captureError(eventName, config, message) {
+                            console.error("TCPlayer Error: ", message);
+                            this.captureEvent(config, eventName, {
+                                errorMessage: message
+                            });
+                        },
+                        captureEvent: function captureEvent(config, action, extraParam, _datasource) {
+                            var datasource = _datasource || "adtag";
+
+                            if (!config.ed) {
+                                return;
+                            }
+                            window.TC_SESSION_ID = window.TC_SESSION_ID || uuidv4();
+                            var obj = {
+                                ...extraParam,
+                                ...getSrcAndPageURL(),
+                                action: action,
+                                event: datasource,
+                                sessionId: window.TC_SESSION_ID,
+                                ed: config.ed,
+                                cacheBuster: new Date().getTime(),
+                                tzOffset: new Date().getTimezoneOffset()
+                            };
+                            if (!!config.trackBaseURL) {
+                                var img = new Image();
+                                img.src = config.trackBaseURL + '?' + toURLParam(obj);
+                            }
+
+                            function toURLParam(obj) {
+                                var list = [];
+
+                                for (var key in obj) {
+                                    list.push(key + '=' + obj[key]);
+                                }
+
+                                return list.join('&');
+                            }
+
+                            function getSrcAndPageURL() {
+                                return {
+                                    srcURL: getSrcURL(),
+                                    purl: getPageURL(),
+                                    refURL: document.referrer.split('?')[0]
+                                }
+                            }
+                            function uuidv4() {
+                                return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
+                                    (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
+                                );
+                            }
+                            function getSrcURL() {
+                                var tmp = document.createElement('a');
+                                tmp.href = getTopFrameURL();
+                                return isValidSrcURL(tmp.hostname)
+                            }
+
+                            function getPageURL() {
+                                return encodeURIComponent(getTopFrameURL());
+                            }
+
+                            function getTopFrameURL() {
+                                if (top === self) {
+                                    return window.location.href.split('?')[0];
+                                } else {
+                                    var ancestorOrigins = document.location.ancestorOrigins;
+                                    if (ancestorOrigins && ancestorOrigins.length > 0) {
+                                        return ancestorOrigins[ancestorOrigins.length - 1];
+                                    } else {
+                                        return document.referrer
+                                    }
+                                }
+                            }
+
+                            function isValidSrcURL(url) {
+                                if (!url) {
+                                    return url;
+                                }
+
+                                var token = url.split(".");
+
+                                if (token.size < 3) { return url; } if (url.includes("google")) { return token.slice(token.length - 2).join("."); }
+                                return url;
+                            }
+                        }
+                    };
+
+                    var USID;
+                    var CUID;
+                    var setCUID = async () => {
+                        var dataZeroResp = await fetch("https://tags3-b.performoo.com/d1Zyfpxv/am/d1ZA1WYv/data0.json?cb=" + new Date().getTime());
+                        CUID = dataZeroResp.headers.get("Cdn-Requestid");
+                        USID = dataZeroResp.headers.get("Cdn-Uid");
+                    }
+
+                    await setCUID();
+
+                    var dataAttVal = document?.currentScript?.dataset || {};
+                    var tcYaasConfig = {
+                        trackBaseURL: 'https://trac-b0.performoo.com/capture',
+                        slotSelector: [],
+                        env: "b",
+                        ed: "3BRsqtVZBLO+2W2QvZcRpXUORC74zTnSzLhZmnwLvq75RR6SXV2PK14io5dKOmzlCAyOeGH4XL/UM/0ZobWMp5fH3a5aplf721K9bEvPwhQ=",
+                        config: { "hooks": [{ "at": 1.0, "type": "JS", "frequency": { "type": "RANDOM", "value": 101.0 }, "data": "(function(){\n    var params = {\n        yaasURL: \"https://yaas-b-s.performoo.com/51.0\",\n        netId: \"dYM-zTi_\",\n        tagLauncherId: \"gecZgXi3c\",\n        ed: \"3BRsqtVZBLO+2W2QvZcRpfsBpZq4SclqYAkFOJXsHCPLq1QX/8rGjdH3oVWkrJupiZp/xL/npilcCGd1uazz1QSp4EWffCo+2OslHiZc788=\",\n        env:\"b\"\n    }\n\n    loadScript().then(()=>{\n        if(window?.TC_YAAS?.setupTagLauncher){\n            window.TC_YAAS.setupTagLauncher(params)\n        }\n    }).catch((e)=>{\n        console.error(\"Script URL is wrong : \", params.yaasURL + '/tagLauncher.js');\n    })\n\n    function loadScript() {\n        return new Promise((resolve, reject) => {\n            var script = document.createElement(\"script\")\n            script.src = params.yaasURL + '/tagLauncher.js'\n            script.addEventListener(\"load\", resolve)\n            script.addEventListener(\"error\", reject)\n            document.body.appendChild(script)\n        })\n    }\n}())" }], "isMonitoring": true, "slot": {} },
+                        dataAttribVal: dataAttVal,
+                        extraParams: {
+                            cuid: CUID,
+                            usid: USID
+                        }
+                    }
+
+                    var setAdSlotStyle = function (_adSlotId, _placementConfig) {
+                        var adSlotEle = document.getElementById(_adSlotId);
+                        if (!adSlotEle || !_placementConfig?.enable) return;
+                        adSlotEle.parentNode.style.position = "relative"
+                        if (_placementConfig?.type === 1) {
+                            var custStyle = _placementConfig?.customStyle || {}
+                            for (var _key in custStyle) adSlotEle.style[_key] = custStyle[_key]
+                            return;
+                        }
+                        adSlotEle.style.position = "absolute"
+                    }
+                    setAdSlotStyle(adSlotId, tcYaasConfig.config.placementConfig);
+
+                    try {
+                        tcYaas.setup({
+                            ...tcYaasConfig,
+                            ...params,
+                            adSlot: params.adSlotId
+                        })
+                    } catch (e) {
+                        console.error("TC Error: ", e)
+                        tcYaas.captureError(TC_ERROR, tcYaasConfig, e.message)
+                    }
+                }
+
+                var adSlotId = 'pf-vastos-d1ZA1WYv-' + new Date().getTime();
+                document.write("<div id='" + adSlotId + "'></div>");
+
+                var param = {
+                    adSlotId: adSlotId,
+                    vastTag: _tcVastTag,
+                    netDataURL: 'https://tags3-b.performoo.com/d1Zyfpxv/data.json',
+                    netId: "d1Zyfpxv",
+                    tagId: "d1ZA1WYv",
+                    auId: "",
+                    labelTagId: "",
+                    tSrc: "s3",
+                    playerURL: "https://yaas-b-monitor.performoo.com/175.0"
+                }
+                param.playInCurrentFrame = !((document.body.clientWidth <= 1) || (window.frameElement && parseInt(window.frameElement.width) <= 1));
+                var w = top;
+                param.playInCurrentFrame && (w = window);
+                try {
+                    w.document
+                } catch (a) {
+                    param.playInCurrentFrame = !0,
+                        w = window
+                }
+                w.TC_YAAS || (w.TC_YAAS = {}),
+                    "undefined" != typeof tcGamMacroClick && (param.gamMacros = {
+                        click: tcGamMacroClick
+                    }),
+                    w.TC_YAAS[adSlotId] = {
+                        loadTag: loadTag,
+                        params: {
+                            ...param
+                        }
+                    },
+                    loadTag(param);
+            }())
+        </script>
 
         <p>
             DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED
