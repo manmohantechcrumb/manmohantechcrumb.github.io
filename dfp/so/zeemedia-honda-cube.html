@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSAP Rotation</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 300px;
+      height: 250px;
+      /* background-color: grey; */
+      perspective: 1000px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .rectangle {
+      height: 325px;
+      width: 215px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform-style: preserve-3d;
+      position: absolute;
+      transform: translateZ(-440px);
+    }
+
+    .card {
+      width: 80%;
+      height: 80%;
+      background-color: blue;
+      position: absolute;
+      border: 1px solid black;
+    }
+
+    .card img {
+      height: 100%;
+      width: 100%;
+    }
+    .cross-btn{
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+
+    .front {
+      background: #FF6B6B;
+      transform: translateZ(150px);
+    }
+
+    .right {
+      background: #4ECDC4;
+      transform: rotateY(120deg) translateZ(150px);
+    }
+
+    .left {
+      background: #45B7D1;
+      transform: rotateY(-120deg) translateZ(150px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="masterContainer">
+    <!-- <div class="cross-btn"  id="crossButton">
+      <img src="https://media-b.performoo.com/2c9f81798c4f31ad018d87ccbd2e2f55/4c914f60-f942-4ae9-9749-ef8d8bba80fb/img/Nzliuo_g/raw" alt="X">
+    </div> -->
+    <div id="rect" class="rectangle" onclick="trackclick()">
+      <div class="card front">
+        <img src="https://media-b.performoo.com/2c9f81798c4f31ad018d87ccbd2e2f55/4c914f60-f942-4ae9-9749-ef8d8bba80fb/img/NCd_uRH4/raw" />
+      </div>
+      <div class="card back">
+        <img src="https://media-b.performoo.com/2c9f81798c4f31ad018d87ccbd2e2f55/4c914f60-f942-4ae9-9749-ef8d8bba80fb/img/gkyN5Q8n0/raw" />
+      </div>
+      <div class="card left">
+        <img src="https://media-b.performoo.com/2c9f81798c4f31ad018d87ccbd2e2f55/4c914f60-f942-4ae9-9749-ef8d8bba80fb/img/gkyN6d7_W/raw" />
+      </div>
+      <div class="card right">
+        <img src="https://media-b.performoo.com/2c9f81798c4f31ad018d87ccbd2e2f55/4c914f60-f942-4ae9-9749-ef8d8bba80fb/img/gkyN6LG3K/raw" />
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>
+
+    // const container = document.getElementById("crossButton")
+    // const masterContainer = document.getElementById("masterContainer")
+
+    // container.addEventListener('click', () => {masterContainer.style.display = "none"})
+    const rectangle = document.querySelector('#rect');
+    let angle = 0;
+
+    function rotateRectangle() {
+      angle -= 120; // Rotate by 120 degrees
+      gsap.to(rectangle, {
+        duration: 2,
+        ease: "elastic.out(1,0.8)",
+        rotationY: angle,
+      });
+    }
+
+    // Rotate every 2 seconds
+    setInterval(rotateRectangle, 2200);
+
+    function sendClickMessage(){
+            const parentWindow = window.parent;
+            parentWindow.postMessage({
+                    type: "CLICK"
+                }, "*");
+            if (window.self !== window.top) {
+                console.log("parentWindow", parentWindow)
+                console.log("WindowTop", window.top)
+                try {
+                    window.top.postMessage({
+                    type: "CLICK"
+                }, "*");
+                
+                } catch (error) {
+                    console.log("MESSAGETRYERROR",error)
+                }
+                
+            } else {
+                console.error('PERFORMOO : cannot send the message if the window is top');
+            }
+        }
+
+        function trackclick(){
+            sendClickMessage()
+            const REDIRECT_URL = "https://www.hondacarindia.com/honda-amaze"
+            window.open(REDIRECT_URL, "_blank")
+        }
+  </script>
+</body>
+
+</html>
