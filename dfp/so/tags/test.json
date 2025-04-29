@@ -1,0 +1,30 @@
+{
+    "db_username": "performoo_qa",
+    "db_password": "Performoo@qa123",
+    "smtp_username": "qa.techcrumb@gmail.com",
+    "smtp_password": "pkkumhthzrucnpav",
+    "jwt_secret_key": "secret",
+    "techcrumb_s3_access_key": "AKIA25B5RCD3H7ODTLFV",
+    "techcrumb_s3_secret_key": "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",
+    "performoo_access_key": "AKIA25B5RCD3H7ODTLFV",
+    "performoo_secret_key": "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",
+    "cdn_api_key": "bafddbeb-30b9-4143-a5d8-3d1fc544b37f0642d421-d02e-4af7-869c-0e32fd5452c5",
+    "videoprocessing_cred_username": "manmohan+admin@techcrumb.com",
+    "videoprocessing_cred_password": "iamindian@123",
+    "openai_assistant_api_key": "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",
+    "openai_completion_api_key": "sk-svcacct-doePVZGDbFgWLoQ_IO-Yhw-m7-4FMx1xFFxg3xQF8BI655ZkvEjrWKD5PkAyuErn38Eo4fRT3BlbkFJHDpIz25oXrpV6-mgUM59Kks6cPtAdTq2lfiMLsoJ02UJGmCl7EExruCM5mdo9eL7NCcoPAA",
+    "azure_open_ai_key": "2IdADqr9BPBRp7UPjPm3SP3pq5mRlB3o9AX0HhucHsi0ZDcL0oiBJQQJ99BBAC77bzfXJ3w3AAABACOGzzDQ",
+    "azure_deployment_name": "gpt-4o-mini"
+}
+
+secret_value=$(aws secretsmanager get-secret-value --secret-id performoo-qa-secrets --region us-east-1 --query SecretString --output text --profile monitor)
+
+# Optional: Extract specific fields if it's JSON
+username=$(echo "$secret_value" | jq -r '.db_username')
+password=$(echo "$secret_value" | jq -r '.db_password')
+
+echo "Username: $username"
+echo "Password: $password"
+
+
+aws secretsmanager get-secret-value --secret-id performoo-qa-secrets --query SecretString --output text --profile monitor
